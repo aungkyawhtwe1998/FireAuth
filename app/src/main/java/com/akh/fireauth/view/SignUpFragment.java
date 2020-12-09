@@ -1,5 +1,6 @@
 package com.akh.fireauth.view;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,9 +20,11 @@ import com.akh.fireauth.viewModel.SignUpViewModel;
 import com.google.firebase.auth.FirebaseUser;
 
 public class SignUpFragment extends Fragment {
-    private EditText edt_email,edt_password;
+    private EditText edt_email,edt_password,edtUsername;
     private Button btn_signup;
     private SignUpViewModel signUpViewModel;
+
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,14 +45,18 @@ public class SignUpFragment extends Fragment {
         edt_email = view.findViewById(R.id.edt_email_signup);
         edt_password = view.findViewById(R.id.edt_pass_singnup);
         btn_signup = view.findViewById(R.id.btn_signup);
+        edtUsername = view.findViewById(R.id.edt_username);
+
 
         btn_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //final ProgressDialog pd = new ProgressDialog(getContext());
                 String email = edt_email.getText().toString();
                 String password = edt_password.getText().toString();
+                String username = edtUsername.getText().toString();
                 if(email.length()>0 && password.length()>0){
-                    signUpViewModel.signUp(email,password);
+                    signUpViewModel.signUp(email,password,username);
                 }
             }
         });

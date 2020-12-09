@@ -17,8 +17,8 @@ public class SignUpViewModel extends AndroidViewModel {
         fireUserRepo = new FireUserRepo(application);
         userMutableLiveData = fireUserRepo.getUserMutableLiveData();
     }
-    public void signUp(String email, String password){
-        fireUserRepo.signUp(email,password);
+    public void signUp(String email, String password, String username){
+        fireUserRepo.signUp(email,password,username);
     }
 
     public MutableLiveData<FirebaseUser> getUserMutableLiveData() {

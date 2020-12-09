@@ -33,7 +33,7 @@ public class LoginFragment extends Fragment {
 
             @Override
             public void onChanged(FirebaseUser firebaseUser) {
-                if(firebaseUser!=null){
+                if(firebaseUser!=null && firebaseUser.isEmailVerified()){
                     Navigation.findNavController(getView())
                             .navigate(R.id.action_loginFragment_to_homeFragment);
                     //getActivity().getSupportFragmentManager().popBackStack();

@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -20,7 +21,7 @@ import com.akh.fireauth.viewModel.HomeViewModel;
 import com.google.firebase.auth.FirebaseUser;
 
 public class HomeFragment extends Fragment {
-    private EditText edt_email;
+    private TextView txtemail,txtusername,txtuserid ;
     private Button btn_logout;
     private HomeViewModel homeViewModel;
 
@@ -32,7 +33,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onChanged(FirebaseUser firebaseUser) {
                 if(firebaseUser!=null){
-                    edt_email.setText(firebaseUser.getEmail());
+                    txtemail.setText(firebaseUser.getEmail());
                     btn_logout.setEnabled(true);
                 }else {
                     btn_logout.setEnabled(false);
@@ -56,7 +57,9 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home,container,false);
-        edt_email = view.findViewById(R.id.edt_email_home);
+        txtemail = view.findViewById(R.id.txt_email);
+        txtuserid = view.findViewById(R.id.txt_user_id);
+        txtusername = view.findViewById(R.id.txt_username);
         btn_logout = view.findViewById(R.id.btn_logout);
         btn_logout.setOnClickListener(new View.OnClickListener() {
             @Override
